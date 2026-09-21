@@ -1,0 +1,158 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-display: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --radius-sm: calc(var(--radius) - 3px);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-brand-bright: var(--brand-bright);
+  --color-brand-mist: var(--brand-mist);
+  --color-brand-soft: var(--brand-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-skill-blue: var(--skill-blue);
+  --color-skill-cyan: var(--skill-cyan);
+  --color-skill-violet: var(--skill-violet);
+  --color-proof-foreground: var(--proof-foreground);
+  --color-proof-muted: var(--proof-muted);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+  button,
+  select,
+  input,
+  textarea {
+    letter-spacing: 0;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-pattern {
+    background-image:
+      radial-gradient(
+        ellipse 80% 50% at 20% 20%,
+        color-mix(in oklab, var(--brand-mist) 25%, transparent) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        ellipse 80% 50% at 80% 80%,
+        color-mix(in oklab, var(--brand-bright) 20%, transparent) 0%,
+        transparent 40%
+      );
+  }
+  .skill-gradient-1 {
+    background: linear-gradient(
+      135deg,
+      oklch(0.57 0.2 255) 0%,
+      oklch(0.72 0.13 201) 50%,
+      oklch(0.57 0.19 297) 100%
+    );
+  }
+  .skill-gradient-2 {
+    background: linear-gradient(
+      135deg,
+      oklch(0.72 0.13 201) 0%,
+      oklch(0.57 0.19 297) 50%,
+      oklch(0.53 0.16 265) 100%
+    );
+  }
+  .brand-gradient-1 {
+    background: linear-gradient(135deg, oklch(0.57 0.2 255) 0%, oklch(0.82 0.09 249) 100%);
+  }
+  .brand-gradient-2 {
+    background: linear-gradient(135deg, oklch(0.82 0.09 249) 0%, oklch(0.96 0.032 252) 100%);
+  }
+  .proof-gradient {
+    background:
+      radial-gradient(
+        circle at 20% 30%,
+        color-mix(in oklab, var(--skill-violet) 50%, transparent) 0%,
+        transparent 35%
+      ),
+      linear-gradient(
+        135deg,
+        oklch(0.23 0.09 264) 0%,
+        oklch(0.3 0.14 270) 50%,
+        oklch(0.24 0.1 244) 100%
+      );
+  }
+  .card-elevated {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .card-elevated:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--primary) 40%, transparent);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
